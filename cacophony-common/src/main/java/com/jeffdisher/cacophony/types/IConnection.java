@@ -29,6 +29,16 @@ public interface IConnection
 	byte[] loadData(IpfsFile file) throws IpfsConnectionException;
 
 	/**
+	 * Loads the data from the local node with the given file CID as a stream.  Note that the caller is responsible for
+	 * closing the returned stream.
+	 * 
+	 * @param file The CID to read.
+	 * @return The stream to fetch the data.
+	 * @throws IpfsConnectionException If an error was encountered when attempting the load.
+	 */
+	InputStream loadDataAsStream(IpfsFile file) throws IpfsConnectionException;
+
+	/**
 	 * Publishes the given file for this channel's public key.
 	 * Note that this can easily fail since IPNS publication is often is very slow.  As a result, a failure here is
 	 * generally "safe".

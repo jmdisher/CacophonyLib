@@ -93,6 +93,23 @@ public class IpfsConnection implements IConnection
 	}
 
 	@Override
+	public InputStream loadDataAsStream(IpfsFile file) throws IpfsConnectionException
+	{
+		try
+		{
+			return _defaultConnection.catStream(file.getMultihash());
+		}
+		catch (RuntimeException e)
+		{
+			throw _handleIpfsRuntimeException("load", file, e);
+		}
+		catch (IOException e)
+		{
+			throw new IpfsConnectionException("load", file, e);
+		}
+	}
+
+	@Override
 	public void publish(String keyName, IpfsKey publicKey, IpfsFile file) throws IpfsConnectionException
 	{
 		// We expect that the caller already validated this name.
