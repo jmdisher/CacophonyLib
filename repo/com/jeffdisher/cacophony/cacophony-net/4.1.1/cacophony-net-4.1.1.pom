@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.jeffdisher.cacophony</groupId>
+		<artifactId>cacophony-lib</artifactId>
+		<version>4.1.1</version>
+	</parent>
+	<artifactId>cacophony-net</artifactId>
+	<name>CacophonyNet</name>
+
+	<properties>
+		<!-- The root directory of the entire project. -->
+		<main.basedir>${project.basedir}/..</main.basedir>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.jeffdisher.cacophony</groupId>
+			<artifactId>cacophony-common</artifactId>
+			<version>4.1.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.eclipse.jetty/jetty-client -->
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-client</artifactId>
+			<version>11.0.17</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.eclipsesource.minimal-json/minimal-json -->
+		<dependency>
+			<groupId>com.eclipsesource.minimal-json</groupId>
+			<artifactId>minimal-json</artifactId>
+			<version>0.9.5</version>
+		</dependency>
+	</dependencies>
+</project>

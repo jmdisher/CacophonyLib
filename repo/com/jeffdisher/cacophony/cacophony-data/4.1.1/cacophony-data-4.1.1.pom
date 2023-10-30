@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.jeffdisher.cacophony</groupId>
+		<artifactId>cacophony-lib</artifactId>
+		<version>4.1.1</version>
+	</parent>
+	<artifactId>cacophony-data</artifactId>
+	<name>CacophonyData</name>
+
+	<properties>
+		<!-- The root directory of the entire project. -->
+		<main.basedir>${project.basedir}/..</main.basedir>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.jeffdisher.cacophony</groupId>
+			<artifactId>cacophony-common</artifactId>
+			<version>4.1.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
+		<dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+			<version>2.3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.xml.bind</groupId>
+			<artifactId>jaxb-impl</artifactId>
+			<version>2.3.4</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<!-- Make sure that the xsd directory is visible in the classpath for tests. -->
+		<testResources>
+			<testResource>
+				<directory>${project.basedir}/src</directory>
+			</testResource>
+		</testResources>
+		<!--  We need to include the xsd directory into the root of the jar so that it can be found at runtime. -->
+		<plugins>
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.6</version>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.basedir}/target/classes/xsd</outputDirectory>
+							<includeEmptyDirs>false</includeEmptyDirs>
+							<resources>
+								<resource>
+									<directory>${project.basedir}/src/xsd</directory>
+									<filtering>false</filtering>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
